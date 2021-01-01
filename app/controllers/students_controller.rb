@@ -1,11 +1,28 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: :show
   
+  def to_s
+    student.first_name + " " + student.last_name
+  end
+  
   def index
     @students = Student.all
   end
 
   def show
+    set_student
+  end
+
+  def activate_student
+    set_student
+    if @student.active == false
+      @student.active = true
+      @student.save
+    else 
+      @student.active = false
+      @student.save
+    end
+    redirect_to student_path(@student) 
   end
 
   private
