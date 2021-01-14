@@ -1,0 +1,2 @@
+      invoke  active_record
+    conflict    db/migrate/20210113185215_add_active_attribute_to_students.rb
